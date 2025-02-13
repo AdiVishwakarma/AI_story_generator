@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Story Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-controls">
+        <div class="language-selector">
+            <select id="language-select">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+            </select>
+        </div>
+        <div class="theme-customizer">
+            <button id="theme-toggle" class="theme-toggle">
+                <span class="icon">🎨</span> Customize Theme
+            </button>
+            <div class="theme-panel hidden">
+                <h3>Customize Theme</h3>
+                <div class="color-picker">
+                    <div class="color-option">
+                        <label>Background</label>
+                        <input type="color" id="bgColor" value="#1a1c2c">
+                    </div>
+                    <div class="color-option">
+                        <label>Text Color</label>
+                        <input type="color" id="textColor" value="#ffffff">
+                    </div>
+                    <div class="color-option">
+                        <label>Accent Color</label>
+                        <input type="color" id="accentColor" value="#4ecdc4">
+                    </div>
+                    <div class="color-option">
+                        <label>Dialogue Color</label>
+                        <input type="color" id="dialogueColor" value="#ff6b6b">
+                    </div>
+                </div>
+                <div class="theme-presets">
+                    <button class="preset-btn active" data-theme="default">Default</button>
+                    <button class="preset-btn" data-theme="dark">Dark</button>
+                    <button class="preset-btn" data-theme="light">Light</button>
+                    <button class="preset-btn" data-theme="forest">Forest</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>AI Story Generator</h1>
+            <p>Create unique stories with the power of AI</p>
+        </header>
+
+        <div class="audio-controls">
+            <button id="toggle-music" class="audio-btn">
+                <span class="icon">🎵</span>
+                <span class="label">Background Music</span>
+            </button>
+            <button id="toggle-sfx" class="audio-btn">
+                <span class="icon">🔊</span>
+                <span class="label">Sound Effects</span>
+            </button>
+        </div>
+
+        <!-- Audio Elements -->
+        <audio id="background-music" loop>
+            <source src="assets/audio/background-music.mp3" type="audio/mp3">
+        </audio>
+        <audio id="click-sound">
+            <source src="assets/audio/click.mp3" type="audio/mp3">
+        </audio>
+        <audio id="success-sound">
+            <source src="assets/audio/success.mp3" type="audio/mp3">
+        </audio>
+
+        <main>
+            <div class="story-form">
+                <div class="input-group">
+                    <label for="prompt">Story Prompt:</label>
+                    <textarea id="prompt" placeholder="Enter your story idea or prompt..."></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Genre:</label>
+                    <div class="genre-buttons">
+                        <button class="genre-btn" data-genre="fantasy">Fantasy</button>
+                        <button class="genre-btn" data-genre="sci-fi">Sci-Fi</button>
+                        <button class="genre-btn" data-genre="romance">Romance</button>
+                        <button class="genre-btn" data-genre="mystery">Mystery</button>
+                        <button class="genre-btn" data-genre="horror">Horror</button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Tone:</label>
+                    <div class="tone-buttons">
+                        <button class="tone-btn" data-tone="funny">Funny</button>
+                        <button class="tone-btn" data-tone="serious">Serious</button>
+                        <button class="tone-btn" data-tone="dramatic">Dramatic</button>
+                        <button class="tone-btn" data-tone="mysterious">Mysterious</button>
+                        <button class="tone-btn" data-tone="dark">Dark</button>
+                    </div>
+                </div>
+
+                <button id="generate-btn">Generate Story</button>
+            </div>
+
+            <div class="story-output">
+                <div class="loading-spinner hidden"></div>
+                <div class="story-stats hidden">
+                    <span id="word-count">Words: 0</span>
+                    <div class="story-controls">
+                        <button id="save-story" class="control-btn">
+                            <span class="icon">💾</span> Save Story
+                        </button>
+                        <button id="copy-story" class="control-btn">
+                            <span class="icon">📋</span> Copy Story
+                        </button>
+                        <button id="read-story" class="control-btn">
+                            <span class="icon">🔊</span> Read Story
+                        </button>
+                    </div>
+                </div>
+                <div id="story-content"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
